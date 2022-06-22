@@ -18,12 +18,15 @@ module.exports = {
       res.status(400).json({ message: error.message });
     }
   },
-  //   async list(req, res) {
-  //     try {
-  //       const listFav = await ListFav.find();
-  //       res.status(200).json({ message: "find lists", data: listFav });
-  //     } catch (error) {
-  //       res.status(400).json(error);
-  //     }
-  //   },
+
+  async show(req, res) {
+    try {
+      const { listId } = req.params;
+
+      const list = await ListFav.findById(listId);
+      res.status(200).json({ message: "list found", data: list });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };

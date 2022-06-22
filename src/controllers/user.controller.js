@@ -47,7 +47,7 @@ module.exports = {
       const id = req.user;
       const user = await User.findById(id)
         .select("-password")
-        .populate({ path: "listFavs", select: "titleList" });
+        .populate("listFavs", "titleList");
       res.status(200).json(user);
     } catch (err) {
       res.status(400).json({ message: err.message });
