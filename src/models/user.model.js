@@ -32,7 +32,7 @@ const userSchema = new Schema(
       match: [passRegex, "password insecure"],
     },
     listFavs: {
-      type: [{ type: Schema.Types.ObjectId, ref: "ListFavs" }],
+      type: [{ type: Schema.Types.ObjectId, ref: "ListFav" }],
       required: false,
     },
   },
