@@ -23,7 +23,10 @@ module.exports = {
     try {
       const { listId } = req.params;
 
-      const list = await ListFav.findById(listId);
+      const list = await ListFav.findById(listId).populate(
+        "items",
+        "itemTitle description link"
+      );
       res.status(200).json({ message: "list found", data: list });
     } catch (error) {
       res.status(400).json({ message: error.message });
