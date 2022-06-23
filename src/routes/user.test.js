@@ -57,4 +57,36 @@ describe("User", () => {
       /User validation failed: email: Email already exist/i
     );
   });
+
+  // login
+
+  // it("should login user correctly", async () => {
+  //   const user = { email: "test99@test.com", password: "Test1234@" };
+  //   await User.create(user);
+  //   const res = await clonServer(app).post("/users/login").send(user);
+  //   console.log(res);
+
+  //   expect(res.statusCode).toBe(200);
+  //   expect(res.body).toHaveProperty("token");
+  // });
+
+  // it("should not login if incorrect password", async () => {
+  //   const user = { email: "test@test.com", password: "12345" };
+  //   await User.create(user);
+
+  //   const res = await clonServer(app)
+  //     .post("/users/login")
+  //     .send({ ...user, password: "1" });
+
+  //   expect(res.statusCode).toBe(400);
+  //   expect(res.body.message).toMatch(/Invalid email or password/i);
+  // });
+
+  // it("should not login user if email does not exist", async () => {
+  //   const user = { email: "test@test.com", password: "12345" };
+  //   const res = await clonServer(app).post("/users/login").send(user);
+
+  //   expect(res.statusCode).toBe(400);
+  //   expect(res.body.message).toMatch(/Invalid email or password/i);
+  // });
 });
