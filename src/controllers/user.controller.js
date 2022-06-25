@@ -1,16 +1,21 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const passRegex =
+  /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
 module.exports = {
   async register(req, res) {
     try {
       const { email, password } = req.body;
-
+      const securePass = passRegex.test(password);
+      if (!securePass) {
+        throw new Error("Password insecure");
+      }
       const encPassword = await bcrypt.hash(password, 8);
       const user = await User.create({ email, password: encPassword });
 
-      const token = jwt.sign({ id: user._id }, "A5535M3NT", {
+      const token = jwt.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24,
       });
       res.status(200).json({ token, message: "User created successfully" });
@@ -33,7 +38,7 @@ module.exports = {
         throw new Error("user or password incorrect");
       }
 
-      const token = jwt.sign({ id: user._id }, "A5535M3NT", {
+      const token = jwt.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24,
       });
       res.status(200).json({ token, message: "User login successfully" });

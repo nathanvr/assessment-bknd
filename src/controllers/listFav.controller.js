@@ -27,6 +27,9 @@ module.exports = {
         "items",
         "itemTitle description link"
       );
+      if (!list) {
+        throw new Error("List doesn't exist");
+      }
       res.status(200).json({ message: "list found", data: list });
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -35,8 +38,18 @@ module.exports = {
 
   async destroy(req, res) {
     try {
-      const { listId } = req.params;
-      const list = await ListFav.findByIdAndDelete(listId);
+      const {
+        params: { listId },
+        user,
+      } = req;
+      // const { listId } = req.params;
+      // const userId = req.user;
+      // const user = await User.findById(userId);
+
+      const list = await ListFav.deleteOne({ _id: listId, user });
+
+      if (!list.deletedCount) throw new Error("you can't");
+
       res.status(200).json({ message: "list deleted succesfully", data: list });
     } catch (error) {
       res.status(400).json({ message: error.message });

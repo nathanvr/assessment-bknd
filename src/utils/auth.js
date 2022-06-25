@@ -19,7 +19,7 @@ exports.auth = (req, res, next) => {
     }
 
     //Reversión de la codificación del token
-    const { id } = jwt.verify(token, "A5535M3NT");
+    const { id } = jwt.verify(token, process.env.SECRET);
 
     //Mutar el objeto req en el user (req.user) para poder acceder a el en cualquier parte
     req.user = id;

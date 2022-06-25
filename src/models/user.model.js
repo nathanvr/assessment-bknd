@@ -1,7 +1,5 @@
 const { Schema, model, models } = require("mongoose");
 
-const passRegex =
-  /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
 const userSchema = new Schema(
@@ -26,7 +24,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: [8, "password too short"],
-      match: [passRegex, "password insecure"],
     },
     listFavs: {
       type: [{ type: Schema.Types.ObjectId, ref: "ListFav" }],

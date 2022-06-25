@@ -17,7 +17,7 @@ describe("User", () => {
   });
 
   it("should create an user correctly", async () => {
-    const user = { email: "test1@gmail.com", password: "Jv50221" };
+    const user = { email: "test1@gmail.com", password: "Jv50221@" };
     const res = await clonServer(app).post("/users/register").send(user);
 
     expect(res.statusCode).toBe(200);
@@ -28,7 +28,7 @@ describe("User", () => {
   });
 
   it("shouldn't creater an user when there is no email ", async () => {
-    const user = { password: "1234" };
+    const user = { password: "Jv50221@" };
     const res = await clonServer(app).post("/users/register").send(user);
 
     expect(res.statusCode).toBe(400);
@@ -38,13 +38,20 @@ describe("User", () => {
   });
 
   it("shouln't create an user when the mail is incorrect", async () => {
-    const user = { email: "test1", password: "1234" };
+    const user = { email: "test1", password: "Jv50221@" };
     const res = await clonServer(app).post("/users/register").send(user);
 
     expect(res.statusCode).toBe(400);
     expect(res.body.message).toMatch(
       /User validation failed: email: invalid email/i
     );
+  });
+
+  it("shouln't create an user when the password is insecure", async () => {
+    const user = { email: "test1@gmail.com", password: "123" };
+    const res = await clonServer(app).post("/users/register").send(user);
+    expect(res.statusCode).toBe(400);
+    expect(res.body.message).toMatch(/Password insecure/i);
   });
 
   it("should not create user when email already exists", async () => {
@@ -58,35 +65,38 @@ describe("User", () => {
     );
   });
 
-  // login
+  // login;
 
-  // it("should login user correctly", async () => {
-  //   const user = { email: "test99@test.com", password: "Test1234@" };
-  //   await User.create(user);
-  //   const res = await clonServer(app).post("/users/login").send(user);
-  //   console.log(res);
+  it("should login user correctly", async () => {
+    const user = { email: "test99@test.com", password: "Test1234@" };
+    await clonServer(app).post("/users/register").send(user);
+    const res = await clonServer(app).post("/users/login").send(user);
 
-  //   expect(res.statusCode).toBe(200);
-  //   expect(res.body).toHaveProperty("token");
-  // });
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty("token");
+  });
 
-  // it("should not login if incorrect password", async () => {
-  //   const user = { email: "test@test.com", password: "12345" };
-  //   await User.create(user);
+  it("should not login if incorrect password", async () => {
+    const user = { email: "test@test.com", password: "Test1234@" };
+    await clonServer(app).post("/users/register").send(user);
 
-  //   const res = await clonServer(app)
-  //     .post("/users/login")
-  //     .send({ ...user, password: "1" });
+    const res = await clonServer(app)
+      .post("/users/login")
+      .send({ ...user, password: "1" });
 
-  //   expect(res.statusCode).toBe(400);
-  //   expect(res.body.message).toMatch(/Invalid email or password/i);
-  // });
+    expect(res.statusCode).toBe(400);
+    expect(res.body.message).toMatch(/user or password incorrect/i);
+  });
 
-  // it("should not login user if email does not exist", async () => {
-  //   const user = { email: "test@test.com", password: "12345" };
-  //   const res = await clonServer(app).post("/users/login").send(user);
+  it("should not login user if email does not exist", async () => {
+    const user = { email: "test@test.com", password: "Test1234@" };
+    await clonServer(app).post("/users/register").send(user);
 
-  //   expect(res.statusCode).toBe(400);
-  //   expect(res.body.message).toMatch(/Invalid email or password/i);
-  // });
+    const res = await clonServer(app)
+      .post("/users/login")
+      .send({ ...user, email: "test2" });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body.message).toMatch(/user or password incorrect/i);
+  });
 });
