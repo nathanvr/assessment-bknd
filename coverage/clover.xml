@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656199269053" clover="3.2.0">
-  <project timestamp="1656199269053" name="All files">
-    <metrics statements="155" coveredstatements="124" conditionals="22" coveredconditionals="15" methods="17" coveredmethods="11" elements="194" coveredelements="150" complexity="0" loc="155" ncloc="155" packages="5" files="12" classes="12"/>
+<coverage generated="1656200023408" clover="3.2.0">
+  <project timestamp="1656200023408" name="All files">
+    <metrics statements="150" coveredstatements="123" conditionals="22" coveredconditionals="15" methods="16" coveredmethods="11" elements="188" coveredelements="149" complexity="0" loc="150" ncloc="150" packages="5" files="12" classes="12"/>
     <package name="src">
       <metrics statements="28" coveredstatements="28" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="5"/>
       <file name="app.js" path="C:\Users\jonathan\Desktop\Proyectos\MIR\Assesment\assessment2\src\app.js">
@@ -40,9 +40,9 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="72" coveredstatements="45" conditionals="12" coveredconditionals="8" methods="8" coveredmethods="4"/>
+      <metrics statements="68" coveredstatements="45" conditionals="12" coveredconditionals="8" methods="7" coveredmethods="4"/>
       <file name="item.controller.js" path="C:\Users\jonathan\Desktop\Proyectos\MIR\Assesment\assessment2\src\controllers\item.controller.js">
-        <metrics statements="15" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="11" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -54,10 +54,6 @@
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
       </file>
       <file name="listFav.controller.js" path="C:\Users\jonathan\Desktop\Proyectos\MIR\Assesment\assessment2\src\controllers\listFav.controller.js">
         <metrics statements="26" coveredstatements="16" conditionals="6" coveredconditionals="2" methods="3" coveredmethods="2"/>
@@ -158,15 +154,14 @@
       </file>
     </package>
     <package name="src.routes">
-      <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="item.routes.js" path="C:\Users\jonathan\Desktop\Proyectos\MIR\Assesment\assessment2\src\routes\item.routes.js">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
       </file>
       <file name="listFav.routes.js" path="C:\Users\jonathan\Desktop\Proyectos\MIR\Assesment\assessment2\src\routes\listFav.routes.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
