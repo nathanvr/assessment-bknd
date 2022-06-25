@@ -32,4 +32,14 @@ module.exports = {
       res.status(400).json({ message: error.message });
     }
   },
+
+  async destroy(req, res) {
+    try {
+      const { listId } = req.params;
+      const list = await ListFav.findByIdAndDelete(listId);
+      res.status(200).json({ message: "list deleted succesfully", data: list });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
