@@ -14,7 +14,7 @@ to use the repository:
 |/users/user-list|GET        |Authenticated    |Return the lists of user authenticated|
 |/favs           |POST       |Authenticated    |Create a list for the user authenticated|
 |/favs/:listId   |GET        |Authenticated    |Get the list with the favs items for the user authenticated|
-|/favs/          |DELETE     |Authenticated    |Delete the list of favs|
+|/favs/:listId   |DELETE     |Authenticated    |Delete the list of favs|
 |/items/:listId  |POST       |Authenticated    |Create a item in one list for the user authenticated|
 
 # Usage
@@ -51,7 +51,7 @@ Authorization: Bearer token
 
 Body: none
 
-## /favs/ - DELETE
+## /favs/:listId  - DELETE
 Authorization: Bearer token
 
 Body: none
